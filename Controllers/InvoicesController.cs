@@ -44,7 +44,7 @@ namespace EfCoreDemo.Controllers
             var result2 = query2.ToList();
             logger.LogInformation($"Result created using IEnumerable");
 
-            return result1;
+            return result2;
         }
 
         [HttpGet]

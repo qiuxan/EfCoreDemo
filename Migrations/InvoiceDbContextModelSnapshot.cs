@@ -17,7 +17,7 @@ namespace EfCoreDemo.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.1")
+                .HasAnnotation("ProductVersion", "8.0.0-rc.2.23480.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -41,7 +41,8 @@ namespace EfCoreDemo.Migrations
                         .HasColumnName("ContactName");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)")
                         .HasColumnName("Description");
 
                     b.Property<DateTimeOffset>("DueDate")
@@ -59,17 +60,18 @@ namespace EfCoreDemo.Migrations
 
                     b.Property<string>("Status")
                         .IsRequired()
+                        .HasMaxLength(16)
                         .HasColumnType("varchar(16)")
                         .HasColumnName("Status");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Invoices");
+                    b.ToTable("Invoices", (string)null);
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("0d501380-83d9-44f4-9087-27c8f09082f9"),
+                            Id = new Guid("1ca43af4-bd53-4f00-9987-3141a4eee1cd"),
                             Amount = 100m,
                             ContactName = "Iron Man",
                             Description = "Invoice for the first month",
@@ -80,7 +82,7 @@ namespace EfCoreDemo.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9ef9d033-28cb-4563-b0dc-25b3b3269350"),
+                            Id = new Guid("2e5d9ec5-b863-4c25-b233-9156d154e8a4"),
                             Amount = 200m,
                             ContactName = "Captain America",
                             Description = "Invoice for the first month",
@@ -91,7 +93,7 @@ namespace EfCoreDemo.Migrations
                         },
                         new
                         {
-                            Id = new Guid("04504f65-7507-4f94-bb0a-96d4f8bd6243"),
+                            Id = new Guid("798e87ed-1686-438f-ac6d-04af9f7e02a2"),
                             Amount = 300m,
                             ContactName = "Thor",
                             Description = "Invoice for the first month",
